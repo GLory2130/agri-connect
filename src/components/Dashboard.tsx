@@ -9,8 +9,11 @@ import {
   AlertCircle, 
   TrendingUp,
   Calendar,
-  Users
+  Users,
+  Star,
+  Share2
 } from "lucide-react";
+import { Link } from "react-router-dom";
 import dashboardPreview from "@/assets/dashboard-preview.jpg";
 
 const Dashboard = () => {
@@ -139,10 +142,18 @@ const Dashboard = () => {
                   <MapPin className="mr-2 h-4 w-4" />
                   Add New Plot
                 </Button>
-                <Button variant="outline" className="w-full justify-start">
-                  <Calendar className="mr-2 h-4 w-4" />
-                  Schedule Service
-                </Button>
+                <Link to="/feedback" className="w-full">
+                  <Button variant="outline" className="w-full justify-start">
+                    <Star className="mr-2 h-4 w-4" />
+                    Rate Services
+                  </Button>
+                </Link>
+                <Link to="/referrals" className="w-full">
+                  <Button variant="outline" className="w-full justify-start">
+                    <Share2 className="mr-2 h-4 w-4" />
+                    Refer Farmers
+                  </Button>
+                </Link>
                 <Button variant="outline" className="w-full justify-start">
                   <AlertCircle className="mr-2 h-4 w-4" />
                   Report Issue
