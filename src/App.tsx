@@ -8,6 +8,9 @@ import Feedback from "./pages/Feedback";
 import Referrals from "./pages/Referrals";
 import AdminDashboard from "./pages/AdminDashboard";
 import NotFound from "./pages/NotFound";
+import Register from "./pages/register";
+import Login from "./pages/login";
+import Services from "./components/Services";
 
 const queryClient = new QueryClient();
 
@@ -22,6 +25,9 @@ const App = () => (
           <Route path="/feedback" element={<Feedback />} />
           <Route path="/referrals" element={<Referrals />} />
           <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/services" element={<Services />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
