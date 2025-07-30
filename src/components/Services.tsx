@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Header from "@/components/Header";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -7,6 +8,7 @@ import { Sprout, Droplets, Bug, BarChart3, MapPin, Clock, Star } from "lucide-re
 const apiUrl = import.meta.env.VITE_API_URL;
 
 const Services = () => {
+  
   const [loadingIndex, setLoadingIndex] = useState<number | null>(null);
   const [message, setMessage] = useState<string | null>(null);
   const [showModal, setShowModal] = useState(false);
@@ -210,289 +212,292 @@ const Services = () => {
   };
 
   return (
-    <section id="services" className="py-20 bg-gradient-sky">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Drone Services for Every Farm Need
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            From precision spraying to crop monitoring, our drone services help you optimize 
-            your farming operations with cutting-edge technology.
-          </p>
-        </div>
+    <div className="min-h-screen">
+      <Header />
+      <section id="services" className="py-20 bg-gradient-sky">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+              Drone Services for Every Farm Need
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              From precision spraying to crop monitoring, our drone services help you optimize 
+              your farming operations with cutting-edge technology.
+            </p>
+          </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {services.map((service, index) => (
-            <Card key={index} className="bg-gradient-card border-0 shadow-soft hover:shadow-agricultural transition-all duration-300">
-              <CardHeader className="text-center">
-                <div className="mx-auto p-3 bg-sage rounded-full w-fit mb-4">
-                  {service.icon}
-                </div>
-                <CardTitle className="text-xl">{service.title}</CardTitle>
-                <CardDescription className="text-muted-foreground">
-                  {service.description}
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <ul className="space-y-2">
-                  {service.features.map((feature, idx) => (
-                    <li key={idx} className="text-sm text-muted-foreground flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-agricultural rounded-full"></div>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-                <div className="pt-4 border-t border-border flex flex-col gap-2">
-                  <p className="text-lg font-semibold text-primary mb-3">{service.price}</p>
-                  <Button
-                    variant="agricultural"
-                    className="w-full"
-                    onClick={() => setShowModal(true)}
-                  >
-                    Request Service
-                  </Button>
-                  <Button
-                    variant="agricultural"
-                    className="w-full"
-                    onClick={() => setShowPayModal(true)}
-                  >
-                    Pay Now
-                  </Button>
-                  <Button
-                    variant="agricultural"
-                    className="w-full"
-                    onClick={() => setShowPlotModal(true)}
-                  >
-                    Create Plot
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            {services.map((service, index) => (
+              <Card key={index} className="bg-gradient-card border-0 shadow-soft hover:shadow-agricultural transition-all duration-300">
+                <CardHeader className="text-center">
+                  <div className="mx-auto p-3 bg-sage rounded-full w-fit mb-4">
+                    {service.icon}
+                  </div>
+                  <CardTitle className="text-xl">{service.title}</CardTitle>
+                  <CardDescription className="text-muted-foreground">
+                    {service.description}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <ul className="space-y-2">
+                    {service.features.map((feature, idx) => (
+                      <li key={idx} className="text-sm text-muted-foreground flex items-center gap-2">
+                        <div className="w-1.5 h-1.5 bg-agricultural rounded-full"></div>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="pt-4 border-t border-border flex flex-col gap-2">
+                    <p className="text-lg font-semibold text-primary mb-3">{service.price}</p>
+                    <Button
+                      variant="agricultural"
+                      className="w-full"
+                      onClick={() => setShowModal(true)}
+                    >
+                      Request Service
+                    </Button>
+                    <Button
+                      variant="agricultural"
+                      className="w-full"
+                      onClick={() => setShowPayModal(true)}
+                    >
+                      Pay Now
+                    </Button>
+                    <Button
+                      variant="agricultural"
+                      className="w-full"
+                      onClick={() => setShowPlotModal(true)}
+                    >
+                      Create Plot
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+          {message && (
+            <div className="text-center text-lg text-primary font-semibold my-4">{message}</div>
+          )}
+          {/* Additional Features */}
+          <div className="grid md:grid-cols-2 gap-8">
+            {features.map((feature, index) => (
+              <Card key={index} className="bg-white/80 backdrop-blur-sm border-0 shadow-soft">
+                <CardContent className="p-6 flex items-start gap-4">
+                  <div className="p-2 bg-accent rounded-lg">
+                    {feature.icon}
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-foreground mb-2">{feature.title}</h3>
+                    <p className="text-muted-foreground">{feature.description}</p>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
-        {message && (
-          <div className="text-center text-lg text-primary font-semibold my-4">{message}</div>
+        {/* Modal for Request Drone */}
+        {showModal && (
+          <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
+            <div className="bg-white rounded-lg p-8 w-full max-w-md shadow-lg relative">
+              <button
+                className="absolute top-2 right-2 text-xl"
+                onClick={() => setShowModal(false)}
+                aria-label="Close"
+              >
+                ×
+              </button>
+              <h2 className="text-2xl font-bold mb-4">Request Drone Service</h2>
+              <form onSubmit={handleRequestSubmit} className="space-y-4">
+                <Input
+                  name="name"
+                  placeholder="Full Name"
+                  value={requestForm.name}
+                  onChange={e => setRequestForm(f => ({ ...f, name: e.target.value }))}
+                  required
+                />
+                <Input
+                  name="phone_number"
+                  placeholder="Phone Number"
+                  value={requestForm.phone_number}
+                  onChange={e => setRequestForm(f => ({ ...f, phone_number: e.target.value }))}
+                  required
+                />
+                <Input
+                  name="email"
+                  type="email"
+                  placeholder="Email"
+                  value={requestForm.email}
+                  onChange={e => setRequestForm(f => ({ ...f, email: e.target.value }))}
+                  required
+                />
+                <Input
+                  name="number_of_drones"
+                  type="number"
+                  min={1}
+                  placeholder="Number of Drones"
+                  value={requestForm.number_of_drones}
+                  onChange={e => setRequestForm(f => ({ ...f, number_of_drones: Number(e.target.value) }))}
+                  required
+                />
+                <Input
+                  name="drone_type"
+                  placeholder="Drone Type"
+                  value={requestForm.drone_type}
+                  onChange={e => setRequestForm(f => ({ ...f, drone_type: e.target.value }))}
+                  required
+                />
+                <Input
+                  name="service_type"
+                  placeholder="Service Type (e.g. spraying, monitoring)"
+                  value={requestForm.service_type}
+                  onChange={e => setRequestForm(f => ({ ...f, service_type: e.target.value }))}
+                  required
+                />
+                <Input
+                  name="location"
+                  placeholder="Farm Location"
+                  value={requestForm.location}
+                  onChange={e => setRequestForm(f => ({ ...f, location: e.target.value }))}
+                  required
+                />
+                {requestError && <div className="text-red-500 text-sm">{requestError}</div>}
+                <Button type="submit" className="w-full" disabled={requestLoading}>
+                  {requestLoading ? "Requesting..." : "Submit Request"}
+                </Button>
+              </form>
+            </div>
+          </div>
         )}
-        {/* Additional Features */}
-        <div className="grid md:grid-cols-2 gap-8">
-          {features.map((feature, index) => (
-            <Card key={index} className="bg-white/80 backdrop-blur-sm border-0 shadow-soft">
-              <CardContent className="p-6 flex items-start gap-4">
-                <div className="p-2 bg-accent rounded-lg">
-                  {feature.icon}
+        {/* Payment Modal */}
+        {showPayModal && (
+          <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
+            <div className="bg-white rounded-lg p-8 w-full max-w-md shadow-lg relative">
+              <button
+                className="absolute top-2 right-2 text-xl"
+                onClick={() => {
+                  setShowPayModal(false);
+                  setPayStatus(null);
+                  setPayError(null);
+                }}
+                aria-label="Close"
+              >
+                ×
+              </button>
+              <h2 className="text-2xl font-bold mb-4">Make Payment</h2>
+              <form onSubmit={handlePaySubmit} className="space-y-4">
+                <Input
+                  name="buyer_name"
+                  placeholder="Full Name"
+                  value={payForm.buyer_name}
+                  onChange={e => setPayForm(f => ({ ...f, buyer_name: e.target.value }))}
+                  required
+                />
+                <Input
+                  name="buyer_email"
+                  type="email"
+                  placeholder="Email"
+                  value={payForm.buyer_email}
+                  onChange={e => setPayForm(f => ({ ...f, buyer_email: e.target.value }))}
+                  required
+                />
+                <Input
+                  name="buyer_phone"
+                  placeholder="Phone Number"
+                  value={payForm.buyer_phone}
+                  onChange={e => setPayForm(f => ({ ...f, buyer_phone: e.target.value }))}
+                  required
+                />
+                <Input
+                  name="amount"
+                  type="number"
+                  placeholder="Amount"
+                  value={payForm.amount}
+                  onChange={e => setPayForm(f => ({ ...f, amount: e.target.value }))}
+                  required
+                />
+                <Input
+                  name="extra_data"
+                  placeholder="Extra Data (optional)"
+                  value={payForm.extra_data}
+                  onChange={e => setPayForm(f => ({ ...f, extra_data: e.target.value }))}
+                />
+                {payError && <div className="text-red-500 text-sm">{payError}</div>}
+                <Button type="submit" className="w-full" disabled={payLoading}>
+                  {payLoading ? "Processing..." : "Pay Now"}
+                </Button>
+              </form>
+              {payStatus && (
+                <div className="mt-4 p-4 rounded-lg bg-green-50 text-green-800">
+                  <p className="text-sm font-semibold">Payment Status: {payStatus.status}</p>
+                  <p className="text-xs">Order ID: {payStatus.order_id}</p>
+                  <p className="text-xs">{payStatus.paid ? "Payment has been received." : "Payment not received."}</p>
                 </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">{feature.title}</h3>
-                  <p className="text-muted-foreground">{feature.description}</p>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </div>
-      {/* Modal for Request Drone */}
-      {showModal && (
-        <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg p-8 w-full max-w-md shadow-lg relative">
-            <button
-              className="absolute top-2 right-2 text-xl"
-              onClick={() => setShowModal(false)}
-              aria-label="Close"
-            >
-              ×
-            </button>
-            <h2 className="text-2xl font-bold mb-4">Request Drone Service</h2>
-            <form onSubmit={handleRequestSubmit} className="space-y-4">
-              <Input
-                name="name"
-                placeholder="Full Name"
-                value={requestForm.name}
-                onChange={e => setRequestForm(f => ({ ...f, name: e.target.value }))}
-                required
-              />
-              <Input
-                name="phone_number"
-                placeholder="Phone Number"
-                value={requestForm.phone_number}
-                onChange={e => setRequestForm(f => ({ ...f, phone_number: e.target.value }))}
-                required
-              />
-              <Input
-                name="email"
-                type="email"
-                placeholder="Email"
-                value={requestForm.email}
-                onChange={e => setRequestForm(f => ({ ...f, email: e.target.value }))}
-                required
-              />
-              <Input
-                name="number_of_drones"
-                type="number"
-                min={1}
-                placeholder="Number of Drones"
-                value={requestForm.number_of_drones}
-                onChange={e => setRequestForm(f => ({ ...f, number_of_drones: Number(e.target.value) }))}
-                required
-              />
-              <Input
-                name="drone_type"
-                placeholder="Drone Type"
-                value={requestForm.drone_type}
-                onChange={e => setRequestForm(f => ({ ...f, drone_type: e.target.value }))}
-                required
-              />
-              <Input
-                name="service_type"
-                placeholder="Service Type (e.g. spraying, monitoring)"
-                value={requestForm.service_type}
-                onChange={e => setRequestForm(f => ({ ...f, service_type: e.target.value }))}
-                required
-              />
-              <Input
-                name="location"
-                placeholder="Farm Location"
-                value={requestForm.location}
-                onChange={e => setRequestForm(f => ({ ...f, location: e.target.value }))}
-                required
-              />
-              {requestError && <div className="text-red-500 text-sm">{requestError}</div>}
-              <Button type="submit" className="w-full" disabled={requestLoading}>
-                {requestLoading ? "Requesting..." : "Submit Request"}
-              </Button>
-            </form>
+              )}
+            </div>
           </div>
-        </div>
-      )}
-      {/* Payment Modal */}
-      {showPayModal && (
-        <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg p-8 w-full max-w-md shadow-lg relative">
-            <button
-              className="absolute top-2 right-2 text-xl"
-              onClick={() => {
-                setShowPayModal(false);
-                setPayStatus(null);
-                setPayError(null);
-              }}
-              aria-label="Close"
-            >
-              ×
-            </button>
-            <h2 className="text-2xl font-bold mb-4">Make Payment</h2>
-            <form onSubmit={handlePaySubmit} className="space-y-4">
-              <Input
-                name="buyer_name"
-                placeholder="Full Name"
-                value={payForm.buyer_name}
-                onChange={e => setPayForm(f => ({ ...f, buyer_name: e.target.value }))}
-                required
-              />
-              <Input
-                name="buyer_email"
-                type="email"
-                placeholder="Email"
-                value={payForm.buyer_email}
-                onChange={e => setPayForm(f => ({ ...f, buyer_email: e.target.value }))}
-                required
-              />
-              <Input
-                name="buyer_phone"
-                placeholder="Phone Number"
-                value={payForm.buyer_phone}
-                onChange={e => setPayForm(f => ({ ...f, buyer_phone: e.target.value }))}
-                required
-              />
-              <Input
-                name="amount"
-                type="number"
-                placeholder="Amount"
-                value={payForm.amount}
-                onChange={e => setPayForm(f => ({ ...f, amount: e.target.value }))}
-                required
-              />
-              <Input
-                name="extra_data"
-                placeholder="Extra Data (optional)"
-                value={payForm.extra_data}
-                onChange={e => setPayForm(f => ({ ...f, extra_data: e.target.value }))}
-              />
-              {payError && <div className="text-red-500 text-sm">{payError}</div>}
-              <Button type="submit" className="w-full" disabled={payLoading}>
-                {payLoading ? "Processing..." : "Pay Now"}
-              </Button>
-            </form>
-            {payStatus && (
-              <div className="mt-4 p-4 rounded-lg bg-green-50 text-green-800">
-                <p className="text-sm font-semibold">Payment Status: {payStatus.status}</p>
-                <p className="text-xs">Order ID: {payStatus.order_id}</p>
-                <p className="text-xs">{payStatus.paid ? "Payment has been received." : "Payment not received."}</p>
-              </div>
-            )}
+        )}
+        {/* Modal for Create Plot */}
+        {showPlotModal && (
+          <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
+            <div className="bg-white rounded-lg p-8 w-full max-w-md shadow-lg relative">
+              <button
+                className="absolute top-2 right-2 text-xl"
+                onClick={() => setShowPlotModal(false)}
+                aria-label="Close"
+              >
+                ×
+              </button>
+              <h2 className="text-2xl font-bold mb-4">Create Plot</h2>
+              <form onSubmit={handlePlotSubmit} className="space-y-4">
+                <Input
+                  name="user_id"
+                  placeholder="User ID"
+                  value={plotForm.user_id}
+                  onChange={e => setPlotForm(f => ({ ...f, user_id: e.target.value }))}
+                  required
+                />
+                <Input
+                  name="drone_id"
+                  placeholder="Drone ID"
+                  value={plotForm.drone_id}
+                  onChange={e => setPlotForm(f => ({ ...f, drone_id: e.target.value }))}
+                  required
+                />
+                {/* Add more fields as needed */}
+                {plotError && <div className="text-red-500 text-sm">{plotError}</div>}
+                <Button type="submit" className="w-full" disabled={plotLoading}>
+                  {plotLoading ? "Creating..." : "Create Plot"}
+                </Button>
+              </form>
+            </div>
           </div>
-        </div>
-      )}
-      {/* Modal for Create Plot */}
-      {showPlotModal && (
-        <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg p-8 w-full max-w-md shadow-lg relative">
-            <button
-              className="absolute top-2 right-2 text-xl"
-              onClick={() => setShowPlotModal(false)}
-              aria-label="Close"
-            >
-              ×
-            </button>
-            <h2 className="text-2xl font-bold mb-4">Create Plot</h2>
-            <form onSubmit={handlePlotSubmit} className="space-y-4">
-              <Input
-                name="user_id"
-                placeholder="User ID"
-                value={plotForm.user_id}
-                onChange={e => setPlotForm(f => ({ ...f, user_id: e.target.value }))}
-                required
-              />
-              <Input
-                name="drone_id"
-                placeholder="Drone ID"
-                value={plotForm.drone_id}
-                onChange={e => setPlotForm(f => ({ ...f, drone_id: e.target.value }))}
-                required
-              />
-              {/* Add more fields as needed */}
-              {plotError && <div className="text-red-500 text-sm">{plotError}</div>}
-              <Button type="submit" className="w-full" disabled={plotLoading}>
-                {plotLoading ? "Creating..." : "Create Plot"}
-              </Button>
-            </form>
-          </div>
-        </div>
-      )}
-      {plotSuccess && (
-        <div className="text-center text-green-600 font-semibold my-4">{plotSuccess}</div>
-      )}
-      {/* Floating Call Support Button */}
-      <a
-        href="https://developers.africastalking.com/simulator"
-        target="_blank"
-        rel="noopener noreferrer"
-        style={{
-          position: "fixed",
-          bottom: "2rem",
-          right: "2rem",
-          zIndex: 1000,
-          textDecoration: "none"
-        }}
-      >
-        <Button
-          variant="hero"
-          className="rounded-full shadow-lg px-6 py-3 text-lg"
-          style={{ background: "#1e293b", color: "#fff" }}
+        )}
+        {plotSuccess && (
+          <div className="text-center text-green-600 font-semibold my-4">{plotSuccess}</div>
+        )}
+        {/* Floating Call Support Button */}
+        <a
+          href="https://developers.africastalking.com/simulator"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            position: "fixed",
+            bottom: "2rem",
+            right: "2rem",
+            zIndex: 1000,
+            textDecoration: "none"
+          }}
         >
-          📞 Call Support
-        </Button>
-      </a>
-    </section>
+          <Button
+            variant="hero"
+            className="rounded-full shadow-lg px-6 py-3 text-lg"
+            style={{ background: "#1e293b", color: "#fff" }}
+          >
+            📞 Call Support
+          </Button>
+        </a>
+      </section>
+    </div>
   );
 };
 

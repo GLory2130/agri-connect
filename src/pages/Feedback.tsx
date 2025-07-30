@@ -5,6 +5,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { ArrowLeft, Star, Award } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import FeedbackForm from "@/components/FeedbackForm";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const Feedback = () => {
   const navigate = useNavigate();
@@ -40,6 +42,7 @@ const Feedback = () => {
 
   return (
     <div className="min-h-screen bg-gradient-sky">
+      <Header />
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="flex items-center gap-4 mb-8">
@@ -196,6 +199,7 @@ const Feedback = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

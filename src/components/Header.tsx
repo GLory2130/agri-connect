@@ -17,7 +17,10 @@ const Header = () => {
         </Link>
         
         <nav className="hidden md:flex items-center gap-6">
-          <a href="#services" className="text-foreground hover:text-primary transition-colors">
+          <a href="/" className="text-foreground hover:text-primary transition-colors">
+          Home
+          </a>
+          <a href="/services" className="text-foreground hover:text-primary transition-colors">
             Services
           </a>
           <Link to="/feedback" className="text-foreground hover:text-primary transition-colors">
@@ -26,9 +29,7 @@ const Header = () => {
           <Link to="/referrals" className="text-foreground hover:text-primary transition-colors">
             Referrals
           </Link>
-          <a href="#contact" className="text-foreground hover:text-primary transition-colors">
-            Support
-          </a>
+          
         </nav>
 
         <div className="flex items-center gap-3">
@@ -37,7 +38,7 @@ const Header = () => {
               login
             </Button>
           </Link>
-          <Link to="/Services">
+          <Link to="/services">
             <Button variant="hero" size="sm">
               Get Started
             </Button>

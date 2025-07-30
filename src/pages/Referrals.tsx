@@ -2,6 +2,8 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import ReferralCard from "@/components/ReferralCard";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const Referrals = () => {
   const navigate = useNavigate();
@@ -47,6 +49,7 @@ const Referrals = () => {
 
   return (
     <div className="min-h-screen bg-gradient-sky">
+      <Header />
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="flex items-center gap-4 mb-8">
@@ -63,6 +66,7 @@ const Referrals = () => {
           <ReferralCard data={referralData} />
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
