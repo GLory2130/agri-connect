@@ -120,5 +120,23 @@ AgriConnect Drone Hub bridges the digital divide by making advanced drone techno
 - Access services even without smartphones or internet
 - Earn rewards and connect with others in the ecosystem
 
+To run the frontend locally:
 
+### 🔧 Prerequisites
 
+- Node.js ≥ 18.x
+- npm ≥ 9.x (or `yarn`)
+
+---
+
+### 📥 1. Clone the Repository
+
+```bash
+git clone https://github.com/GLory2130/agri-connect.git
+cd agri-connect
+
+To install dependencies
+npm install or npm i
+
+Start Application
+npm run dev
