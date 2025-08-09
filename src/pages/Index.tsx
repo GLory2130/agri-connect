@@ -9,7 +9,7 @@ const Index = () => {
     <div className="min-h-screen">
       <Header />
       <Hero />
-      <Footer />
+      
     </div>
   );
 };
